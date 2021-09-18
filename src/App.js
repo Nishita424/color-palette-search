@@ -1,12 +1,14 @@
 import { React, useState } from "react";
 import styled from "styled-components";
+import "./App.css";
 
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	margin: 4rem;
+	padding: 4rem 0;
+	background: palevioletred;
 `;
 
 const Input = styled.div`
@@ -14,14 +16,18 @@ const Input = styled.div`
 	align-items: center;
 	gap: 10px;
 	label {
-		color: VIOLET;
+		color: turquoise;
+		font-style: italic;
+		font-size: 20px;
 	}
 	input {
 		margin: auto;
 		padding: 10px;
 		border: 2px solid DEEPSKYBLUE;
 		border-radius: 10px;
-		color: red;
+		color: darkgreen;
+		background-color: whitesmoke;
+		font-style: italic;
 	}
 `;
 
