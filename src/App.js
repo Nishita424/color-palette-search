@@ -32,13 +32,13 @@ const Input = styled.div`
 `;
 
 const ColorPalette = styled.div`
-	display: grid;
 	margin-top: 4rem;
-	grid-gap: 10px;
-	grid-template-columns: 100px 100px 100px 100px;
-	${
-		"" /* ${(searchResults) => (searchResults ? `display: grid;` : `display: block;`)} */
-	}
+	${(props) =>
+		props.searchResults > 0
+			? `display: grid; 
+				grid-gap: 10px;
+				grid-template-columns: 100px 100px 100px 100px;`
+			: `display: block;`}
 `;
 
 const ColorBlock = styled.div`
@@ -46,14 +46,13 @@ const ColorBlock = styled.div`
 	border-radius: 5px;
 	height: 100px;
 	width: 100px;
-	${({ color }) => `background: ${color};`}
+	${"" /* Destructuring or using props obj */}
+	${"" /* ${({ color }) => `background-color: ${color};`} */}
+	background-color: ${(props) => props.color}
 `;
 
 const NoResults = styled.h2`
 	background: yellow;
-	width: 280px;
-	text-align: center;
-	margin: 0 5rem;
 `;
 
 function App() {
@@ -116,7 +115,7 @@ function App() {
 					placeholder="Type a color"
 				/>
 			</Input>
-			<ColorPalette>
+			<ColorPalette searchResults={colorPalette.length}>
 				{colorPalette.length ? (
 					colorPalette.map((color, index) => {
 						return (
