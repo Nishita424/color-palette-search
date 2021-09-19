@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import styled from "styled-components";
-import "./App.css";
 
 const Container = styled.div`
 	display: flex;
@@ -8,7 +7,7 @@ const Container = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	padding: 4rem 0;
-	background: palevioletred;
+	background: ${({ theme }) => theme.colors.mainBackground};
 `;
 
 const Input = styled.div`
@@ -16,14 +15,14 @@ const Input = styled.div`
 	align-items: center;
 	gap: 10px;
 	label {
-		color: turquoise;
+		color: ${({ theme }) => theme.colors.label};
 		font-style: italic;
 		font-size: 20px;
 	}
 	input {
 		margin: auto;
 		padding: 10px;
-		border: 2px solid DEEPSKYBLUE;
+		border: 2px solid ${({ theme }) => theme.colors.inputBorder};
 		border-radius: 10px;
 		color: darkgreen;
 		background-color: whitesmoke;
@@ -39,10 +38,16 @@ const ColorPalette = styled.div`
 				grid-gap: 10px;
 				grid-template-columns: 100px 100px 100px 100px;`
 			: `display: block;`}
+	@media ${({ theme }) => theme.mediaQueries["below-420"]} {
+		grid-template-columns: 100px 100px;
+	}
+	@media ${({ theme }) => theme.mediaQueries.below768} {
+		grid-template-columns: 100px 100px 100px;
+	}
 `;
 
 const ColorBlock = styled.div`
-	border: 2px solid yellow;
+	border: 2px solid ${({ theme }) => theme.colors.blockBorder};
 	border-radius: 5px;
 	height: 100px;
 	width: 100px;
@@ -52,7 +57,7 @@ const ColorBlock = styled.div`
 `;
 
 const NoResults = styled.h2`
-	background: yellow;
+	background: ${({ theme }) => theme.colors.highlighter};
 `;
 
 function App() {
@@ -118,9 +123,7 @@ function App() {
 			<ColorPalette searchResults={colorPalette.length}>
 				{colorPalette.length ? (
 					colorPalette.map((color, index) => {
-						return (
-							<ColorBlock key={index} color={color}></ColorBlock>
-						);
+						return <ColorBlock key={index} color={color} />;
 					})
 				) : (
 					<NoResults>No search results found</NoResults>
