@@ -123,7 +123,7 @@ function App() {
 			<ColorPalette searchResults={colorPalette.length}>
 				{colorPalette.length ? (
 					colorPalette.map((color, index) => {
-						return <ColorBlock key={index} color={color} />;
+						return (<ColorBlock key={index} color={color}/>);
 					})
 				) : (
 					<NoResults>No search results found</NoResults>
