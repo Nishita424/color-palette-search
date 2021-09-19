@@ -3,12 +3,12 @@ import { createGlobalStyle } from "styled-components";
 // For resetting
 const GlobalStyles = createGlobalStyle`
     html {
-        height: 100%;
+        min-height: 100%;
+        background-color: palevioletred;
     }
     * {
         margin: 0;
         padding: 0;
-        ${"" /* background-color: palevioletred; */}
     }
 `;
 
