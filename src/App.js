@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import styled from "styled-components";
+import * as _ from "lodash";
 
 const Container = styled.div`
 	display: flex;
@@ -99,8 +100,8 @@ function App() {
 		const searchColor = e.target.value;
 		setSearchValue(searchColor);
 		if (searchColor) {
-			const matchingColors = defaultColors.filter((color) =>
-				color.includes(searchColor)
+			const matchingColors = _.filter(defaultColors, (color) =>
+				_.includes(color, _.toLower(searchColor))
 			);
 			setColorPalette(matchingColors);
 		} else {
