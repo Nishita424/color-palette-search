@@ -7,14 +7,24 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	padding: 4rem 0;
+	padding-bottom: 4rem;
 	background: ${({ theme }) => theme.colors.mainBackground};
+`;
+
+const Header = styled.h1`
+	padding: 20px 0;
+	color: peachpuff;
+	background-color: powderblue;
+	width: 100%;
+	text-align: center;
+	-webkit-text-stroke: 2px palevioletred;
 `;
 
 const Input = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 10px;
+	margin-top: 4rem;
 	label {
 		color: ${({ theme }) => theme.colors.label};
 		font-style: italic;
@@ -111,6 +121,7 @@ function App() {
 
 	return (
 		<Container>
+			<Header>Color Picker</Header>
 			<Input>
 				<label>Color:</label>
 				<input
@@ -124,7 +135,7 @@ function App() {
 			<ColorPalette searchResults={colorPalette.length}>
 				{colorPalette.length ? (
 					colorPalette.map((color, index) => {
-						return (<ColorBlock key={index} color={color}/>);
+						return <ColorBlock key={index} color={color} />;
 					})
 				) : (
 					<NoResults>No search results found</NoResults>
